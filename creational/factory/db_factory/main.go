@@ -1,9 +1,9 @@
 package main
 
 import (
-	"dp/factory/factory1/constants"
-	"dp/factory/factory1/dao"
-	"dp/factory/factory1/model"
+	"dp/creational/factorynal/factory/factory1/constants"
+	"dp/creational/factorynal/factory/factory1/dao"
+	"dp/creational/factorynal/factory/factory1/model"
 	"encoding/json"
 	"fmt"
 	"sync"

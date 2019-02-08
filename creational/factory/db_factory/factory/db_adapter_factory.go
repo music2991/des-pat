@@ -1,8 +1,8 @@
 package factory
 
 import (
-	"dp/factory/factory1/constants"
-	"dp/factory/factory1/factory/database_factory"
+	"dp/creational/factory/db_factory/constants"
+	"dp/creational/factory/db_factory/factory/database_factory"
 	"errors"
 )
 

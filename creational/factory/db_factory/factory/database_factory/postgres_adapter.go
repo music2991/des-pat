@@ -2,32 +2,37 @@ package database_factory
 
 import (
 	"database/sql"
-	"dp/factory/factory1/config"
-	"dp/factory/factory1/constants"
+	"dp/creational/factorynal/factory/factory1/config"
+	"dp/creational/factorynal/factory/factory1/constants"
 	"errors"
 	"fmt"
-	_ "github.com/go-sql-driver/mysql"
+	_ "github.com/lib/pq"
 )
 
-type MysqlAdapter struct{}
+type PostgresAdapter struct{}
 
-func (MysqlAdapter) GetConnection() (*sql.DB, error) {
-	// DNS = username:password@protocol(address)/dbname?param=value
-	format := "%s:%s@tcp(%s)/%s"
-	server, err := getMysqlConfig()
+func (PostgresAdapter) GetConnection() (*sql.DB, error) {
+	format := "user=%s password=%s host=%s dbname=%s sslmode=disable"
+	server, err := getPostgresConfig()
 	if err != nil {
 		return nil, err
 	}
 	dataSourceName := fmt.Sprintf(format, server.User, server.Password, server.Host, server.DbName)
 
-	db, err := sql.Open(constants.Mysql, dataSourceName)
+	db, err := sql.Open(constants.Postgresql, dataSourceName)
 	if err != nil {
 		return nil, err
 	}
+
+	err = db.Ping()
+	if err != nil {
+		return nil, err
+	}
+
 	return db, nil
 }
 
-func getMysqlConfig() (serverConfig, error) {
+func getPostgresConfig() (serverConfig, error) {
 	switch config.Environment {
 	case constants.Production:
 		return serverConfig{

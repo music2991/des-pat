@@ -2,8 +2,8 @@ package database_factory
 
 import (
 	"database/sql"
-	"dp/creational/factorynal/factory/factory1/config"
-	"dp/creational/factorynal/factory/factory1/constants"
+	"dp/creational/factory/db_factory/config"
+	"dp/creational/factory/db_factory/constants"
 	"errors"
 	"fmt"
 	_ "github.com/lib/pq"
@@ -36,10 +36,10 @@ func getPostgresConfig() (serverConfig, error) {
 	switch config.Environment {
 	case constants.Production:
 		return serverConfig{
-			Host:     "host",
-			DbName:   "db_name",
-			User:     "user",
-			Password: "pwd",
+			Host:     "localhost",
+			DbName:   "postgres",
+			User:     "postgres",
+			Password: "docker",
 		}, nil
 	case constants.Development:
 		return serverConfig{

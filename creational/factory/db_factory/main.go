@@ -1,17 +1,17 @@
 package main
 
 import (
-	"dp/creational/factorynal/factory/factory1/constants"
-	"dp/creational/factorynal/factory/factory1/dao"
-	"dp/creational/factorynal/factory/factory1/model"
+	"dp/creational/factory/db_factory/constants"
+	"dp/creational/factory/db_factory/dao"
+	"dp/creational/factory/db_factory/model"
 	"encoding/json"
 	"fmt"
 	"sync"
 )
 
 func main() {
-	//executeOne()
-	executeInGoroutines()
+	executeOne()
+	//executeInGoroutines()
 }
 
 func executeOne() {
@@ -57,7 +57,7 @@ func executeInGoroutines() {
 
 			productList, err = productDAO.GetAllProducts()
 			if err != nil {
-				fmt.Println(currentCicle, "*** error")
+				fmt.Println(currentCicle, "*** error", err)
 				return
 			}
 

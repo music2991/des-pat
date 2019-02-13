@@ -2,8 +2,8 @@ package database_factory
 
 import (
 	"database/sql"
-	"dp/creational/factorynal/factory/factory1/config"
-	"dp/creational/factorynal/factory/factory1/constants"
+	"dp/creational/factory/db_factory/config"
+	"dp/creational/factory/db_factory/constants"
 	"errors"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"

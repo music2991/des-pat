@@ -1,10 +1,10 @@
 package dao
 
 import (
-	"dp/creational/factorynal/factory/factory1/factory"
-	"dp/creational/factorynal/factory/factory1/factory/database_factory"
-	"dp/creational/factorynal/factory/factory1/model"
-	"dp/creational/factorynal/factory/factory1/util"
+	"dp/creational/factory/db_factory/factory"
+	"dp/creational/factory/db_factory/factory/database_factory"
+	"dp/creational/factory/db_factory/model"
+	"dp/creational/factory/db_factory/util"
 )
 
 func NewProductDAO(dbType string) (productDAO, error) {

@@ -7,6 +7,7 @@ import (
 	"errors"
 	"fmt"
 	_ "github.com/lib/pq"
+	"time"
 )
 
 type PostgresAdapter struct{}
@@ -29,6 +30,10 @@ func (PostgresAdapter) GetConnection() (*sql.DB, error) {
 		return nil, err
 	}
 
+	db.SetMaxOpenConns(3000)
+	db.SetMaxIdleConns(5)
+	db.SetConnMaxLifetime(time.Hour)
+
 	return db, nil
 }
 
@@ -36,10 +41,10 @@ func getPostgresConfig() (serverConfig, error) {
 	switch config.Environment {
 	case constants.Production:
 		return serverConfig{
-			Host:     "localhost",
-			DbName:   "postgres",
-			User:     "postgres",
-			Password: "docker",
+			Host:     "d004.kleverness.com",
+			DbName:   "KlevernessDB",
+			User:     "kndb_admin",
+			Password: "12345Ab...",
 		}, nil
 	case constants.Development:
 		return serverConfig{

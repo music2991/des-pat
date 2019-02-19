@@ -41,10 +41,10 @@ func getPostgresConfig() (serverConfig, error) {
 	switch config.Environment {
 	case constants.Production:
 		return serverConfig{
-			Host:     "d004.kleverness.com",
-			DbName:   "KlevernessDB",
-			User:     "kndb_admin",
-			Password: "12345Ab...",
+			Host:     "test",
+			DbName:   "test",
+			User:     "test",
+			Password: "test",
 		}, nil
 	case constants.Development:
 		return serverConfig{
